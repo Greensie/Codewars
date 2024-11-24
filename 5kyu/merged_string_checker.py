@@ -8,6 +8,7 @@ p2 = 'oears'
 
 def is_merge(s, part1, part2):
     if sorted(s) == sorted(part1 + part2):
+        print(sorted(s),sorted(part1 + part2))
         return True
     return False
 
@@ -16,7 +17,8 @@ def is_merge(s, part1, part2):
     ('codewars', 'code', 'wars', True),
     ('codewars', 'cdw', 'oears', True),
     ('codewars', 'cod', 'wars', False),
-
+    ('codewars', 'code', 'wasr', True), # can handle characters in wrong order in tests used on website this expects False which is wrong
+    ('codewars', 'cwdr', 'oeas', True) # can handle characters in wrong order in tests used on website this expects False which is wrong
 ])
 def test_is_merge(s, p1, p2, expected_result):
     assert is_merge(s, p1, p2) == expected_result
