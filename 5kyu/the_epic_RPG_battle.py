@@ -7,19 +7,22 @@ class Actions(Enum):
     NORMAL_ATTACK = 2
     SPECIAL_ATTACK = 3
 
+
 class Hero:
     def __init__(self):
+        self.name = "Hero"
         self.hp = 0
         self.power = 0
         self.next_damage_multiplayer = 0
         self.damage_to_op = 0
         self.loose_flag = 0
 
-    def turn_as_first(self, action_number):
-            return self.damage_to_op
+    def turn_as_first(self, action: Actions):
+        return self.damage_to_op
 
     def react_to_op_turn(self, damage_suffered):
         return self.hp
+
 
 class Warrior(Hero):
     def __init__(self):
@@ -51,7 +54,6 @@ class Warrior(Hero):
         return self.hp
 
 
-
 class Mage(Hero):
     def __init__(self):
         self.name = 'Mage'
@@ -79,7 +81,6 @@ class Mage(Hero):
         if self.hp <= 0:
             self.loose_flag = 1
         return self.hp
-
 
 
 class Assassin(Hero):
@@ -119,18 +120,38 @@ class Assassin(Hero):
 
 
 class Battle:
-    def __init__(self,class1: Hero,class2: Hero):
+    def __init__(self, class1: Hero, class2: Hero):
         self.is_over = 0
-        hero1 = class1
-        hero1_turn = class1.turn_as_first()
-        hero1_react = class1.react_to_op_turn()
-        hero2 = class2
-        hero2_turn = class2.turn_as_first()
-        hero2_react = class2.react_to_op_turn()
-        hero1hp = class1.hp
-        hero2hp = class2.hp
+        self.hero1 = class1
+        self.hero1_turn = class1.turn_as_first(Actions.NORMAL_ATTACK)
+        self.hero1_react = class1.react_to_op_turn(0)
+        self.hero2 = class2
+        self.hero2_turn = class2.turn_as_first(Actions.NORMAL_ATTACK)
+        self.hero2_react = class2.react_to_op_turn(0)
+        self.hero1hp = class1.hp
+        self.hero2hp = class2.hp
+        self.hero1_name = class1.name
+        self.hero2_name = class2.name
 
-    def play_turn(self,action: Actions, action2: Actions):
+    def play_turn(self, action: Actions, action2: Actions):
+        if self.hero1hp == 0 or self.hero2hp == 0:
+            result = "This battle is over!"
+            return result
+        dmg1 = self.hero1_turn(action)
+        self.hero2hp = self.hero2_react(dmg1)
+        dmg2 = self.hero2_turn(action2)
+        self.hero1hp = self.hero1_react(dmg2)
+        result = self.hero1_name + " HP =" + self.hero1hp + ", " + self.hero2_name + " HP =" + self.hero2hp
+        if self.hero1hp == 0 or self.hero2hp == 0:
+            if self.hero1hp > self.hero2hp:
+                result = "The" + self.hero1_name + "won! Remaining HP=" + self.hero1hp
+            if self.hero2hp > self.hero1hp:
+                result = "The" + self.hero2_name + "won! Remaining HP=" + self.hero2hp
 
-        result = "The"
         return result
+
+
+beowulf = Warrior()
+merlin = Mage()
+epic_battle = Battle(beowulf, merlin)
+epic_battle.play_turn(Actions.NORMAL_ATTACK, Actions.BUFF)
