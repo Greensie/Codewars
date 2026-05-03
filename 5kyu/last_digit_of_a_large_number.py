@@ -8,5 +8,5 @@ def last_digit(n1, n2):
     r = n2 % 4
     if r == 0:
         r = 4
-    ld = (b ** r) % 10
+    ld = (b**r) % 10
     return ld

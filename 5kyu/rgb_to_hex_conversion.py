@@ -1,4 +1,4 @@
-#https://www.codewars.com/kata/513e08acc600c94f01000001
+# https://www.codewars.com/kata/513e08acc600c94f01000001
 def rgb(r, g, b):
     if r < 0:
         r = 0
@@ -24,17 +24,17 @@ def rgb(r, g, b):
     A = [r_hex1, r_hex2, g_hex1, g_hex2, b_hex_1, b_hex_2]
 
     for x in range(0, len(A)):
-        if A[x] == '10':
-            A[x] = 'A'
-        elif A[x] == '11':
-            A[x] = 'B'
-        elif A[x] == '12':
-            A[x] = 'C'
-        elif A[x] == '13':
-            A[x] = 'D'
-        elif A[x] == '14':
-            A[x] = 'E'
-        elif A[x] == '15':
-            A[x] = 'F'
+        if A[x] == "10":
+            A[x] = "A"
+        elif A[x] == "11":
+            A[x] = "B"
+        elif A[x] == "12":
+            A[x] = "C"
+        elif A[x] == "13":
+            A[x] = "D"
+        elif A[x] == "14":
+            A[x] = "E"
+        elif A[x] == "15":
+            A[x] = "F"
 
     return A[0] + A[1] + A[2] + A[3] + A[4] + A[5]

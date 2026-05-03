@@ -14,10 +14,7 @@ def validate(n):
                 if tab[i] > 9:
                     tab[i] = check_for_doubledigits(tab[i])
             result += tab[i]
-        if result % 10 == 0:
-            return True
-        else:
-            return False
+        return result % 10 == 0
 
     else:
         for i in range(len(tab)):
@@ -26,10 +23,7 @@ def validate(n):
                 if tab[i] > 9:
                     tab[i] = check_for_doubledigits(tab[i])
             result += tab[i]
-        if result % 10 == 0:
-            return True
-        else:
-            return False
+        return result % 10 == 0
 
 
 def check_for_doubledigits(num):
@@ -39,13 +33,16 @@ def check_for_doubledigits(num):
 
 
 # print(validate(n))
-@pytest.mark.parametrize("numbers, expected_result", [
-    (1714, False),
-    (12345, False),
-    (891, False),
-    (1, False),
-    (2121, True),
-    (1230, True),
-])
+@pytest.mark.parametrize(
+    "numbers, expected_result",
+    [
+        (1714, False),
+        (12345, False),
+        (891, False),
+        (1, False),
+        (2121, True),
+        (1230, True),
+    ],
+)
 def test_solution(numbers, expected_result):
     assert validate(numbers) == expected_result

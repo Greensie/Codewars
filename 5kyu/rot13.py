@@ -1,7 +1,7 @@
 # https://www.codewars.com/kata/530e15517bc88ac656000716
 def rot13(message):
     ASCII_values = []
-    ret = ''
+    ret = ""
     for letters in message:
         ASCII_values.append(ord(letters))
 

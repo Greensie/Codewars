@@ -18,14 +18,17 @@ def adjacent_element_product(array):
 print(adjacent_element_product(a))
 
 
-@pytest.mark.parametrize("arr, expected_result", [
-    ([5, 8], 40),
-    ([1, 2, 3], 6),
-    ([1, 5, 10, 9], 90),
-    ([4, 12, 3, 1, 5], 48),
-    ([9, 5, 10, 2, 24, -1, -48], 50),
-    ([1, 0, 1, 0, 1000], 0),
-    ([-23, 4, -5, 99, -27, 329, -2, 7, -921], -14)
-])
+@pytest.mark.parametrize(
+    "arr, expected_result",
+    [
+        ([5, 8], 40),
+        ([1, 2, 3], 6),
+        ([1, 5, 10, 9], 90),
+        ([4, 12, 3, 1, 5], 48),
+        ([9, 5, 10, 2, 24, -1, -48], 50),
+        ([1, 0, 1, 0, 1000], 0),
+        ([-23, 4, -5, 99, -27, 329, -2, 7, -921], -14),
+    ],
+)
 def test_arrays(arr, expected_result):
     assert adjacent_element_product(arr) == expected_result

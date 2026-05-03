@@ -5,11 +5,6 @@ import math
 def is_prime(num):
     if num < 0 or num == 0 or num == 1:
         return False
-    elif num == 2:
+    if num == 2:
         return True
-    elif num > 2:
-        for i in range(2, int(math.sqrt(num)) + 1):
-            if num % i == 0:
-                return False
-
-        return True
+    return all(num % i != 0 for i in range(2, int(math.sqrt(num)) + 1))
