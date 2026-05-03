@@ -1,4 +1,4 @@
-#https://www.codewars.com/kata/525c7c5ab6aecef16e0001a5
+# https://www.codewars.com/kata/525c7c5ab6aecef16e0001a5
 from pytest import mark
 
 local_modifiers = {
@@ -8,7 +8,8 @@ outer_modifiers = {
     "thousand": 1000,
     "million": 1000000,
 }
-base_nums = {"zero": 0,
+base_nums = {
+    "zero": 0,
     "one": 1,
     "two": 2,
     "three": 3,
@@ -35,7 +36,10 @@ base_nums = {"zero": 0,
     "sixty": 60,
     "seventy": 70,
     "eighty": 80,
-    "ninety": 90}
+    "ninety": 90,
+}
+
+
 def parse_int(string):
     str_divided = string.replace("-", " ").split()
     curr = 0
@@ -54,12 +58,16 @@ def parse_int(string):
     total += curr
     return total
 
-@mark.parametrize("string, expected", [
-    ("seven hundred eighty-three thousand nine hundred and nineteen",783919),
-    ("one",1),
-    ("twenty", 20),
-    ("two hundred forty-six", 246),
-    ("one thousand and one", 1001),
-])
+
+@mark.parametrize(
+    "string, expected",
+    [
+        ("seven hundred eighty-three thousand nine hundred and nineteen", 783919),
+        ("one", 1),
+        ("twenty", 20),
+        ("two hundred forty-six", 246),
+        ("one thousand and one", 1001),
+    ],
+)
 def test_parse_int(string, expected):
     assert parse_int(string) == expected

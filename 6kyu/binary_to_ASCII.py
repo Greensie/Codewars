@@ -1,6 +1,6 @@
 def binary_to_string(binary):
-    if binary == '':
-        return ''
+    if binary == "":
+        return ""
 
     binary_str = binary
     letters = []
@@ -14,20 +14,20 @@ def binary_to_string(binary):
 
     return ret_str
 
-def binnary_to_ASCII(str)->str:
+
+def binnary_to_ASCII(str) -> str:
     listOfNums = list(str)
     i = 0
     num = 0
     n = 7
-    while(i<8):
-        num += int(listOfNums[i])*(2**n)
+    while i < 8:
+        num += int(listOfNums[i]) * (2**n)
         i += 1
         n -= 1
     return chr(num)
 
 
+# print(binnary_to_ASCII('01001000'))
 
-#print(binnary_to_ASCII('01001000'))
-
-bin = '0100100001100101011011000110110001101111'
+bin = "0100100001100101011011000110110001101111"
 print(binary_to_string(bin))

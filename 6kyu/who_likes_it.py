@@ -10,6 +10,13 @@ def likes(names):
     elif len(names) == 3:
         x = str(names[0]) + ", " + str(names[1]) + " and " + str(names[2]) + " like this"
     else:
-        x = str(names[0]) + ", " + str(names[1]) + " and " + str(len(names) - 2) + " others like this"
+        x = (
+            str(names[0])
+            + ", "
+            + str(names[1])
+            + " and "
+            + str(len(names) - 2)
+            + " others like this"
+        )
 
     return x
